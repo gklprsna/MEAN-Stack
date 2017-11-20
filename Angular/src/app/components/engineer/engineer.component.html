@@ -1,0 +1,50 @@
+<div>
+  <div class="rows">
+
+
+     <div class = 'col-md-4 col-md-offset-4'>
+       <h1>Employee Listing </h1>
+       <br>
+       <br>
+     </div>
+
+
+       <div class='col-md-4 col-md-offset-1'>
+         <!-- <input type="" placeholder="Search..." class="" / > -->
+         <input type="text" value="" class="well-sm" placeholder="Search..." (keyup) = "filterData($event)" />
+         <a routerLink="/engineer" routerLinkActive="active" class="btn well-sm btn-info btn-sm">Add </a>
+       </div>
+    
+
+
+
+
+    <div class="col-md-10 col-md-offset-1">
+            <table class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th class="col-md-3">First Name</th>
+                        <th class="col-md-3">Last Name</th>
+                        <th class="col-md-2">Date of Birth</th>
+                        <th class="col-md-2">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor = "let engineer of engineers">
+                      <tr>
+                        <td>{{engineer.firstName}}</td>
+                        <td>{{engineer.lastName}}</td>
+                        <td>{{engineer.dob}}</td>
+                        <td>
+                            <input type="button" value="Update" class="btn btn-sm btn-primary" (click) = "updateClick(engineer._id)" />
+                            <input type="button" value="Delete" class="btn btn-sm btn-danger" (click) = "deleteClick(engineer._id)" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                </div>
+
+    </div> 
+
+
+</div>

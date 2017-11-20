@@ -1,0 +1,65 @@
+<div class="col-md-offset-2">
+                <br>
+                <br>
+                <input type="button" value = "Back" class="btn btn-sm btn-info" (click)="goBack()">
+ </div>
+
+
+
+<div class = "col-md-6 col-md-offset-3">
+    <h2> Enter the Engineer detail to update </h2>
+    <form class="well" (submit) = "updateEngineer($event)" #engForm="ngForm">
+            <div class="form-group" >
+                <label>First Name</label>
+                <input type="text" class="form-control" [ngModel] = "engineer?.firstName" (ngModelChange) = "engineer.firstName = $event" name = "firstName" required minlength="4" #firstName="ngModel" />
+                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                    class="alert alert-danger">
+       
+                   <div *ngIf="firstName.errors.required">
+                     First Name is required.
+                   </div>
+                   <div *ngIf="firstName.errors.minlength">
+                     First Name must be at least 4 characters long.
+                   </div>
+       
+                </div>
+            </div>
+        
+            <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" [ngModel] = "engineer?.lastName" (ngModelChange) = "engineer.lastName = $event" name = "lastName" required minlength="4" #lastName="ngModel" />
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                        class="alert alert-danger">
+           
+                       <div *ngIf="lastName.errors.required">
+                         Last Name is required.
+                       </div>
+                       <div *ngIf="lastName.errors.minlength">
+                         Last Name must be at least 4 characters long.
+                       </div>
+           
+                    </div>
+            </div>
+        
+            <div class="form-group">
+                    <label>Date of Birth</label>
+                    <!-- <input type="text" class="form-control" [ngModel] = "engineer?.dob" (ngModelChange) = "engineer.dob = $event" name = "dob"/> -->
+                        <div >
+                                <p-calendar [ngModel]="engineer?.dob"  (ngModelChange) = "engineer.dob = $event" name = "dob" showButtonBar="true" name ="dob" dataType ="string" required = "true" showIcon="true"  required #dob="ngModel" ></p-calendar>
+                        </div>
+                        <div *ngIf="dob.invalid && (dob.dirty || dob.touched)"
+                        class="alert alert-danger">
+           
+                       <div *ngIf="dob.errors.required">
+                         Date of Birth is required.
+                       </div>
+           
+                    </div>
+            </div>
+            
+            <div>
+                    <input type ="submit" value="Update" class="btn btn-sm btn-primary" [disabled]="engForm.invalid" />
+                    <a routerLink="/engineers" routerLinkActive="active" class="btn btn-danger btn-sm">Cancel </a>
+            </div>
+        </form>
+</div>
